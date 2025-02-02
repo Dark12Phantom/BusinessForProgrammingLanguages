@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
+* {
     --primary-color: #d30d0d;
     --primary-dark: #3e0101;
     --shades: #491301;
@@ -8,15 +8,16 @@
     --secondary-color: #f7dc31;
     --secondary-accent: #f6fa00;
     --text-color: #fff;
+    --text-color-2: #000;
 }
 
-body{
+body {
     background-color: var(--primary-dark);
     margin: 0;
     padding: 0;
 }
 
-nav{
+nav {
     background-color: var(--secondary-color);
     display: flex;
     flex-direction: column;
@@ -26,7 +27,7 @@ nav{
     align-items: center;
 }
 
-nav .logo{
+nav .logo {
     width: 7rem;
     height: 7rem;
     background-color: #fff;
@@ -34,7 +35,7 @@ nav .logo{
     border-radius: 50%;
 }
 
-nav ul li{
+nav ul li {
     list-style: none;
     text-decoration: none;
     font-family: "Poppins", serif;
@@ -43,4 +44,62 @@ nav ul li{
     display: flex;
     margin: 0;
     padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color-2);
+}
+
+
+
+.account-item {
+    position: relative;
+}
+
+.popover {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 10px;
+    z-index: 1000;
+    min-width: 150px;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.account-link {
+    display: flex;
+    align-items: center;
+}
+
+.popover a {
+    display: block;
+    padding: 8px 12px;
+    color: var(--text-color-2);
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.popover a:hover {
+    /* background-color: #f0f0f0; */
+}
+
+.popover.active {
+    display: block;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.arrow-icon {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.account-item.active .arrow-icon {
+    transform: rotate(1deg);
 }

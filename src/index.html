@@ -1,27 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programming Languages - Main</title>
+    <title>Home</title>
 
     <link rel="stylesheet" href="./css/main-style.css">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
+
 <body>
     <div class="dashboard-container">
         <div class="wrapper">
             <nav>
                 <img src="" alt="" class="logo">
                 <ul>
-                    <li>Home</li>
-                    <li>Menu</li>
-                    <li>Dashboard</li>
-                    <li>About</li>
-                    <li>Account</li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="./htmlDIR/dashboard.html">Dashboard</a></li>
+                    <li><a href="./htmlDIR/menu.html">Menu</a></li>
+                    <li><a href="./htmlDIR/about.html">About</a></li>
+                    <li class="account-item">
+                        <a href="" class="account-link">
+                            Account
+                            <span class="material-symbols-outlined arrow-icon">keyboard_arrow_right</span>
+                        </a>
+                        <div class="popover">
+                            <a href="./htmlDIR/account-signup.html" id="signup-link">Sign Up</a>
+                            <a href="./htmlDIR/account-login.html" id="login-link">Login</a>
+                            <a href="./htmlDIR/account-manage.html" id="profile-link">Profile</a>
+                            <a href="#" id="logout-link">Logout</a>
+                        </div>
+                    </li>
+
                 </ul>
             </nav>
         </div>
     </div>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accountLink = document.querySelector('.account-link');
+        const popover = document.querySelector('.popover');
+        const accountItem = document.querySelector('.account-item');
+        const arrowIcon = document.querySelector('.arrow-icon');
+
+        accountLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            accountItem.classList.toggle('active');
+            popover.classList.toggle('active');
+
+            if (accountItem.classList.contains('active')) {
+                arrowIcon.textContent = 'keyboard_arrow_down';
+            } else {
+                arrowIcon.textContent = 'keyboard_arrow_right';
+            }
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!accountLink.contains(e.target) && !popover.contains(e.target)) {
+                accountItem.classList.remove('active');
+                popover.classList.remove('active');
+                arrowIcon.textContent = 'keyboard_arrow_right';
+            }
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const isLoggedIn = checkLoginStatus();
+
+        const signupLink = document.getElementById('signup-link');
+        const loginLink = document.getElementById('login-link');
+        const profileLink = document.getElementById('profile-link');
+        const logoutLink = document.getElementById('logout-link');
+
+        if (isLoggedIn) {
+            signupLink.style.display = 'none';
+            loginLink.style.display = 'none';
+            profileLink.style.display = 'block';
+            logoutLink.style.display = 'block';
+        } else {
+            signupLink.style.display = 'block';
+            loginLink.style.display = 'block';
+            profileLink.style.display = 'none';
+            logoutLink.style.display = 'none';
+        }
+    });
+
+    function checkLoginStatus() {
+        return false;
+    }
+</script>
+
 </html>
