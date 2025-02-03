@@ -4,12 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="1; url=./src/index.html">
-    <title>Document</title>
+    <meta http-equiv="refresh" content="3.5; url=./srcUser/index.html">
+    <title>Redirecting to Home...</title>
 </head>
 
-<body>
+<body 
+style="display: flex; 
+    width: 100vw; 
+    height: 100vh; 
+    justify-content: center; 
+    align-items: center;">
+    
+    <h1><div id="countdown"></div></h1>
 
 </body>
+
+
+<script>
+    var timeleft = 3;
+    var downloadTimer = setInterval(function(){
+        if(timeleft <= 0){
+        clearInterval(downloadTimer);
+    } else {
+        document.getElementById("countdown").innerHTML = 
+        "You will be redirected to our hompage within " + 
+        timeleft + " seconds...";
+    }
+    timeleft -= 1;
+    }, 1000);
+
+</script>
 
 </html>
