@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isLoggedIn) {
             signupLink.style.display = 'none';
             loginLink.style.display = 'none';
-            profileLink.style.display = 'block';
-            logoutLink.style.display = 'block';
+            profileLink.style.display = 'flex';
+            logoutLink.style.display = 'flex';
         } else {
-            signupLink.style.display = 'block';
-            loginLink.style.display = 'block';
+            signupLink.style.display = 'flex';
+            loginLink.style.display = 'flex';
             profileLink.style.display = 'none';
             logoutLink.style.display = 'none';
         }
