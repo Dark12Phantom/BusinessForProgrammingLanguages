@@ -1,0 +1,28 @@
+main img{
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.wrapper{
+    display: flex;
+}
+
+.wrapper main{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.wrapper main h2{
+    font-size: 3rem;
+}
+
+main .cont{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+    justify-content: center;
+}
