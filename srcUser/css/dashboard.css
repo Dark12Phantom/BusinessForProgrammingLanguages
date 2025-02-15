@@ -1,10 +1,10 @@
 * {
-    --primary-color: #d30d0d;
-    --primary-dark: #a70000;
-    --shades: #491301;
-    --accent-color: #f59e24;
-    --secondary-color: #f7dc31;
-    --secondary-accent: #f6fa00;
+    --primary-color: #e8720d;
+    --primary-dark: #723a08;
+    --shades: #381a01;
+    --accent-color: #ff9500;
+    --secondary-color: #eec249;
+    --secondary-accent: #31280e;
     --text-color: #fff;
     --text-color-2: #000;
 }
@@ -15,9 +15,42 @@
 }
 
 .card {
-    width: 25vw;
-    height: 90vh;
+    width: 30rem;
+    height: 50rem;
+    padding: 1rem;
     margin-top: 20px;
     border-radius: 15px;
-    box-shadow: 0 0 10px 10px var(--shades);
+    box-shadow: 10px 10px 15px 2px var(--primary-color), -10px -10px 15px 1px var(--shades);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.circle {
+    width: 25em;
+    height: 25em;
+    border: solid black 1px;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
+.card span{
+    width: 90%;
+    border: solid var(--accent-color) 1px;
+    border-radius: 50px;
+}
+
+.card p{
+    color: var(--secondary-color);
+    font-size: 2rem;
+}
+
+.card .text{
+    height: 25%;
+}
+
+main{
+    width: 82vw;
 }
