@@ -59,7 +59,7 @@ main .logo {
 
 .top-slider img {
     left: calc(20rem *7);
-    animation: scrollLeft 10s linear infinite;
+    animation: scrollLeft 14s linear infinite;
 }
 
 @keyframes scrollLeft {
@@ -70,7 +70,7 @@ main .logo {
 
 .bottom-slider img {
     right: calc(20rem * 7);
-    animation: scrollRight 10s linear infinite;
+    animation: scrollRight 14s linear infinite;
 }
 
 @keyframes scrollRight {
