@@ -1,5 +1,10 @@
 .wrapper{
-    display: flex;flex-direction: row;
+    display: flex;
+    flex-direction: row;
+}
+
+body{
+    overflow-x: hidden;
 }
 
 main{
@@ -7,6 +12,7 @@ main{
     flex-direction: row;
     flex-wrap: wrap;
     padding: 2rem;
+    width: 85%;
 }
 
 .cards{
