@@ -1,49 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Savory Spot Tavern</title>
-    
+
+    <link rel="stylesheet" href="../css/account.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <link rel="icon" href="../images/photo_2025-02-14_21-17-19.png">
-
-    <link rel="stylesheet" href="./css/main-style.css">
-    <link rel="stylesheet" href="../css/account.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - Savory Spot Tavern</title>
-
-    <link rel="stylesheet" href="../css/account.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
 
 <body>
     <nav>
         <div class="logo">
             <a href="../index.html">
-                <img src="../images/photo_2025-02-14_21-17-19.png">
+                <img src="../images/photo_2025-02-14_21-17-19.png" alt="Logo">
             </a>
         </div>
     </nav>
 
-    <main>
+    <main class="page" id="login">
         <div class="blank2"></div>
         <div class="separator2"></div>
         <div class="container2">
             <div class="login">
                 <div class="credentials"></div>
                 <span></span>
-                <p>No Account? | <a href="./account-signup.html">Create an account.</a></p>
+                <p>No Account? | <a href="./account-signup.html" class="transition">Create an account.</a></p>
             </div>
         </div>
     </main>
 </body>
-</html>
-</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll('.transition');
+        links.forEach(link => {
+            link.addEventListener('click', function () {
+                e.preventDefault();
+                const targetPage = this.getAttribute('href')
+                document.querySelector('.page.active').classList.remove('active')
+                setTimeout(() => {
+                    window.location.href = targetPage
+                }, 1000)
+            });
+        });
+        setTimeout(() => {
+            document.querySelector('.page').classList.add('active')
+        }, 100)
+    });
+</script>
+
 </html>
