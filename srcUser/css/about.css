@@ -34,6 +34,7 @@ main {
     padding: 0 10px;
     border-radius: 15px;
     color: white;
+    text-align: justify;
 }
 
 .card p {
@@ -54,4 +55,15 @@ main {
 
 .card4 {
     grid-area: card4;
+}
+
+.card4 p a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.card4 p a:hover,
+.card4 p span:hover {
+    text-decoration: underline;
+    color: #ff9500;
 }
