@@ -67,3 +67,9 @@ main {
     text-decoration: underline;
     color: #ff9500;
 }
+
+@media screen and (max-width: 1366px)  {
+    .card p {
+    font-size: 1.2rem;
+   }
+}

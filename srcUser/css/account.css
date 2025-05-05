@@ -346,3 +346,14 @@ a:hover {
     margin: 0;
     padding: 0;
 }
+
+@media screen and (max-width: 1366px)  {
+    .login p, .signup p{
+        font-size: 1.1rem;
+    }
+
+    .credentials{
+        height: 110%;
+        width: 80%;
+    }
+}

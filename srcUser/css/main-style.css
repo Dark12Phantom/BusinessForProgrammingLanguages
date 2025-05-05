@@ -141,3 +141,15 @@ nav li a.active {
 nav li a svg.active {
     fill: var(--primary-dark);
 }
+
+@media screen and (max-width: 1366px) {
+    nav ul li{
+        font-size: 1.1rem;
+    }
+
+    nav .logo{
+        width: 6rem;
+        height: 6rem;
+    }
+
+}
