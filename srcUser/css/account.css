@@ -85,7 +85,7 @@ main {
 
 .signup{
     overflow-y: auto;
-    height: max-content;
+    height: 80%;
 }
 
 ::-webkit-scrollbar{
@@ -109,6 +109,7 @@ main {
     height: 85%;
     width: 50%;
     margin-top: 13vh;
+    padding: 1rem 0;
 }
 
 
@@ -137,6 +138,9 @@ main {
     height: 90%;
     width: 90%;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .login-credentials{
@@ -168,14 +172,36 @@ main {
 form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: 100%;
+    justify-content: space-around;
+    height: 90%;
     width: 100%;
     margin: auto;
-    gap: 0.3rem;
+    gap: .5rem;
+    overflow-y: scroll;
 }
 
-input:is([type="text"], [type="password"], [type="number"], [type="email"], [type="date"]) {
+form div span{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+}
+
+form div{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form div input{
+    padding-left: 30px;
+}
+
+.signup p, .signup h1{
+    position: relative;
+}
+
+input:is([type="text"], [type="password"], [type="number"], [type="email"], [type="date"], [type="tel"]) {
     width: 96.5%;
     padding: 8px 10px;
     border: none;

@@ -51,6 +51,11 @@
 
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email" required>
+                        <label for="phone">Phone Number</label>
+                        <div style="display: flex; gap: 5px;">
+                            <div>+63</div>
+                            <input type="tel" name="phone" id="phone" placeholder="9123456789" required>
+                        </div>
                         <label for="uname">Username</label>
                         <input type="text" name="uname" id="uname" required>
                         <label for="password">Password</label>
@@ -67,7 +72,7 @@
                     </form>
                 </div>
                 <span></span>
-                <p>Have an account? | <a href="./account-login.html" class="transition">Login</a> instead.</p>
+                <p>Have an account? | <a href="./account-login.php" class="transition">Login</a> instead.</p>
             </div>
         </div>
         <div class="separator1"></div>

@@ -48,7 +48,7 @@
                 </div>
                 </form>
                 <span></span>
-                <p>No Account? | <a href="./account-signup.html" class="transition">Create an account.</a></p>
+                <p>No Account? | <a href="./account-signup.php" class="transition">Create an account.</a></p>
             </div>
         </div>
     </main>
