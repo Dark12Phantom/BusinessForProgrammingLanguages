@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choose a Field to Enter</title>
+    <title>Landingr</title>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -18,11 +18,56 @@
             overflow: hidden;
         }
 
-        .wrapper {
+       .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, #fff, #f0f0f0);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .login-options {
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 80vh;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .login-btn {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 200px;
+            text-align: center;
+        }
+        
+        .login-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255,107,107,0.2);
+        }
+        
+        .tagline {
+            font-style: italic;
+            margin-top: 2rem;
+            opacity: 0.8;
         }
 
         .button{
@@ -53,30 +98,114 @@
             width: 100%;
             height: 100%;
         }
+
+         .featured-dishes, .reviews {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 1rem;
+    }
+    
+    .dish-cards, .review-cards {
+        display: flex;
+        gap: 1.5rem;
+        overflow-x: auto;
+        padding: 1rem 0;
+    }
+    
+    .dish-card, .review-card {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        min-width: 250px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    .dish-rank {
+        background: var(--primary);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    
+    .rating {
+        color: gold;
+        font-size: 1.2rem;
+        margin: 0.5rem 0;
+    }
     </style>
 </head>
 
 <body>
+    <section class="hero">
+        <h1>Welcome to SAVORY</h1>
+        <p style="font-style: italic;">Drop the diet, embrace the yum</p>
+        
+        <div class="login-options">
+            <div class="login-btn" onclick="location.href='./srcUser/index.html'">
+                <h3>Customer</h3>
+                <p>Browse menus & rate</p>
+            </div>
+            
+            <div class="login-btn" onclick="location.href='./srcAdmin/index.phpl'">
+                <h3>Staff</h3>
+                <p>Manage orders</p>
+            </div>
+            
+            <div class="login-btn" onclick="location.href='./srcAdmin/htmlDIR/admin-dashboard.php'">
+                <h3>Manager</h3>
+                <p>Admin dashboard</p>
+            </div>
+        </div>
+        
+    </section>
 
-    <h1>Choose a Field to Enter</h1>
+     <!--dishes-->
+    <section class="featured-dishes">
+        <h2>Top Dishes This Week</h2>
+        <div class="dish-cards">
+            <div class="dish-card">
+                <div class="dish-rank">#1</div>
+                <div class="dish-image" style="background-image: url('')"></div>
+                <h3>Dish1</h3>
+                <p>★★★★☆ (128)</p>
+            </div>
+            <div class="dish-card">
+                <div class="dish-rank">#2</div>
+                <div class="dish-image" style="background-image: url('')"></div>
+                <h3>Dish2</h3>
+                <p>★★★★☆ (97)</p>
+            </div>
+            <div class="dish-card">
+                <div class="dish-rank">#3</div>
+                <div class="dish-image" style="background-image: url('')"></div>
+                <h3>Dish3</h3>
+                <p>★★★★★ (84)</p>
+            </div>
+        </div>
+    </section>
 
-    <div class="wrapper">
-        <div class="button">
-            <p>
-                <a href="./srcUser/index.html">I am a Customer.</a>
-            </p>
+     <!--reviews-->
+    <section class="reviews">
+        <h2>Recent Reviews</h2>
+        <div class="review-cards">
+            <div class="review-card">
+                <div class="reviewer">Anon</div>
+                <div class="rating">★★★★★</div>
+                <p>"The service was exceptional!"</p>
+            </div>
+            <div class="review-card">
+                <div class="reviewer">Anon</div>
+                <div class="rating">★★★★☆</div>
+                <p>"Great ambiance, but the music was a bit too loud."</p>
+            </div>
         </div>
-        <div class="button">
-            <p>
-                <a href="./srcAdmin/index.php">I am a Staff.</a>
-            </p>
-        </div>
-        <div class="button">
-            <p>
-                <a href="./srcAdmin/htmlDIR/admin-dashboard.php">I am a Manager.</a>
-            </p>
-        </div>
-    </div>
+    </section>
 
 </body>
 
