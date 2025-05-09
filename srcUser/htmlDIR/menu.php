@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Savory Spot Tavern</title>
+    <title>Menu - Savory Spot Tavern</title>
 
-    <link rel="icon" href="./images/photo_2025-02-14_21-17-19.png">
+    <link rel="icon" href="../images/photo_2025-02-14_21-17-19.png">
 
-    <link rel="stylesheet" href="./css/main-style.css">
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="../css/main-style.css">
+    <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
 
@@ -25,8 +25,8 @@
                                 <path
                                     d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z" />
                             </svg> Home</a></li>
-                    <li><a href="../htmlDIR/menu.php" class="active"> 
-                        <svg class="active"
+                    <li><a href="../htmlDIR/menu.php" class="active">
+                            <svg class="active"
                                 xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
                                 viewBox="0 0 24 24" width="24px">
                                 <g>
@@ -101,54 +101,109 @@
 
                 </ul>
             </nav>
-            
+
             <main>
-                <div class="image-slider top-slider">
-                    <img src="" alt="" class="img1">
-                    <img src="" alt="" class="img2">
-                    <img src="" alt="" class="img3">
-                    <img src="" alt="" class="img4">
-                    <img src="" alt="" class="img5">
-                    <img src="" alt="" class="img6">
-                    <img src="" alt="" class="img7">
-                </div>
+                <?php
+                require_once __DIR__ . '../../dbConnection.php';
 
-                <div class="center">
-                    <div class="statistics">
-                        <div class="contain">
-                            <div class="rating"></div>
-                            <div class="desc">
-                                <p>Top Dish</p>
+                $sql = "SELECT * FROM menu";
+                $result = mysqli_query($conn, $sql);
+
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $name = htmlspecialchars($row['name']);
+                    $image = htmlspecialchars($row['image_path']);
+                    $price = number_format($row['cost'], 2);
+                    $rating = intval($row['rating']);
+                }
+                ?>
+                <div class="cards cards1">
+                    <img src="../images/tilapia.jpg" alt="" class="item">
+                    <div class="description">
+                        <p class="name">Grilled Tilapia</p>
+                        <div id="rating-price">
+                            <div id="rating">
+                                <p class="rating">
+                                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+                                        height="20px" viewBox="0 0 24 24" width="20px">
+                                        <g>
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                        </g>
+                                        <g>
+                                            <path
+                                                d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z" />
+                                        </g>
+                                    </svg>
+                                </p>
+                                <p class="rating">
+                                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+                                        height="20px" viewBox="0 0 24 24" width="20px">
+                                        <g>
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                        </g>
+                                        <g>
+                                            <path
+                                                d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z" />
+                                        </g>
+                                    </svg>
+                                </p>
+                                <p class="rating">
+                                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+                                        height="20px" viewBox="0 0 24 24" width="20px">
+                                        <g>
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                        </g>
+                                        <g>
+                                            <path
+                                                d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z" />
+                                        </g>
+                                    </svg>
+                                </p>
+                                <p class="rating">
+                                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+                                        height="20px" viewBox="0 0 24 24" width="20px">
+                                        <g>
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                        </g>
+                                        <g>
+                                            <path
+                                                d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z" />
+                                        </g>
+                                    </svg>
+                                </p>
+                                <p class="rating">
+                                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
+                                        height="20px" viewBox="0 0 24 24" width="20px">
+                                        <g>
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                        </g>
+                                        <g>
+                                            <path
+                                                d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z" />
+                                        </g>
+                                    </svg>
+                                </p>
                             </div>
+                            <p class="price">
+                                ₱180.00
+                            </p>
                         </div>
                     </div>
-                    <div class="cont">
-                        <div class="logo"></div>
-                    </div>
-                    <div class="statistics">
-                        <div class="contain">
-                            <div class="rating"></div>
-                            <div class="desc">
-                                <p>Restaurant Rating</p>
-                            </div>
-                        </div>
+                    <div class="clickable">
+                        <p class="read">Read More</p>
+                        <p class="order">Order Now</p>
                     </div>
                 </div>
 
-                <div class="image-slider bottom-slider">
-                    <img src="" alt="" class="img1">
-                    <img src="" alt="" class="img2">
-                    <img src="" alt="" class="img3">
-                    <img src="" alt="" class="img4">
-                    <img src="" alt="" class="img5">
-                    <img src="" alt="" class="img6">
-                    <img src="" alt="" class="img7">
-                </div>
             </main>
         </div>
     </div>
 </body>
 
-<script src="./scripts/script.js"></script>
+<script src="../scripts/script.js"></script>
 
 </html>
