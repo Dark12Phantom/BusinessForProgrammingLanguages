@@ -1,21 +1,51 @@
+<?php
+
+require_once('../../dbConnection.php');
+session_start();
+
+$conn = dbConnection();
+
+// Redirect if not logged in
+if (!isset($_SESSION['employee_id'])) {
+    header('Location: ../index.php');
+    exit();
+}
+
+// Fetch staff details
+$stmt = $conn->prepare("SELECT fname, lname, position FROM employees WHERE employee_id = ?");
+$stmt->bind_param("i", $_SESSION['employee_id']);
+$stmt->execute();
+$result = $stmt->get_result();
+$employee = $result->fetch_assoc();
+$stmt->close();
+
+// Check position and redirect if needed
+if ($employee['position'] === 'staff') {
+    header('Location: order-processing.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Admin Spot Tavern</title>
     <link rel="stylesheet" href="../css/admin-dashboard.css">
 </head>
 
 <body>
     <div class="wrapper">
+    <?php if ($employee['position'] === 'manager'): ?>
+        <script>alert('Welcome <?php echo $employee['fname']," ", $employee['lname'] ?>!');</script>
+    <?php endif;?>
         <div class="admin-profile">
             <img src="admin.jpg" alt="Admin Profile">
             <div class="desc">
-                <h2>FName Lname </h2>
-                <p>Manager</p>
-                <p>ID Number</p>
+                <h2><?php echo isset($employee['fname']) ? $employee['fname'] . ' ' . $employee['lname'] : 'FName LName'; ?></h2>
+                <p><?php echo isset($employee['position']) ? ucfirst($employee['position']) : 'Position'; ?></p>
+                <p>ID: <?php echo isset($_SESSION['employee_id']) ? $_SESSION['employee_id'] : 'ID Number'; ?></p>
             </div>
         </div>
 
