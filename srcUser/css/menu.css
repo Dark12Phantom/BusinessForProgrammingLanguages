@@ -56,11 +56,12 @@ p{
     cursor: pointer;
 }
 
-#rating{
+.stars{
     display: flex;
+    flex-direction: row;
 }
 
-.rating svg{
+.stars svg{
     fill: #ffbb00;
 }
 

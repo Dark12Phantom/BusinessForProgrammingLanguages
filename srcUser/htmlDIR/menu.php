@@ -25,7 +25,7 @@
                                 <path
                                     d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z" />
                             </svg> Home</a></li>
-                    <li><a href="../htmlDIR/menu.php" class="active">
+                    <li><a href="./menu.php" class="active">
                             <svg class="active"
                                 xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
                                 viewBox="0 0 24 24" width="24px">
@@ -48,7 +48,7 @@
                                     </g>
                                 </g>
                             </svg> Menu</a></li>
-                    <li><a href="../htmlDIR/about.html"> <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                    <li><a href="./about.html"> <svg xmlns="http://www.w3.org/2000/svg" height="24px"
                                 viewBox="0 0 24 24" width="24px">
                                 <path d="M0 0h24v24H0V0z" fill="none" />
                                 <path
@@ -64,12 +64,12 @@
                             <span class="material-symbols-outlined arrow-icon">keyboard_arrow_right</span>
                         </a>
                         <div class="popover">
-                            <a href="../htmlDIR/account-signup.php" id="signup-link"> <svg
+                            <a href="account-signup.php" id="signup-link"> <svg
                                     xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px">
                                     <path d="M0 0h24v24H0V0z" fill="none" />
                                     <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
                                 </svg> Sign Up</a>
-                            <a href="../htmlDIR/account-login.php" id="login-link"> <svg
+                            <a href="account-login.php" id="login-link"> <svg
                                     xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
                                     viewBox="0 0 24 24" width="24px">
                                     <g>
@@ -80,7 +80,7 @@
                                             d="M11,7L9.6,8.4l2.6,2.6H2v2h10.2l-2.6,2.6L11,17l5-5L11,7z M20,19h-8v2h8c1.1,0,2-0.9,2-2V5c0-1.1-0.9-2-2-2h-8v2h8V19z" />
                                     </g>
                                 </svg> Login</a>
-                            <a href="../htmlDIR/account-manage.html" id="profile-link"> <svg
+                            <a href="account-manage.php" id="profile-link"> <svg
                                     xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px">
                                     <path d="M0 0h24v24H0V0z" fill="none" />
                                     <path
@@ -104,100 +104,62 @@
 
             <main>
                 <?php
-                require_once __DIR__ . '../../dbConnection.php';
+                require_once __DIR__ . '/../../dbConnection.php';
 
-                $sql = "SELECT * FROM menu";
-                $result = mysqli_query($conn, $sql);
+                $conn = dbConnection();
 
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $name = htmlspecialchars($row['name']);
-                    $image = htmlspecialchars($row['image_path']);
-                    $price = number_format($row['cost'], 2);
-                    $rating = intval($row['rating']);
+                $query = "SELECT * FROM menu";
+                $result = $conn->query($query);
+
+                if ($result) {
+                    // Get the total number of items in the result set
+                    $totalItems = $result->num_rows;
+
+                    // Initialize the iteration counter
+                    $i = 1;
+
+                    // Loop through the result set and display the items
+                    while ($row = $result->fetch_assoc()) {
+                        $stars = '';
+
+                        // Generate filled stars based on the rating
+                        for ($starFilled = 0; $starFilled < $row['rating']; $starFilled++) {
+                            $stars .= '
+                <svg xmlns="http://www.w3.org/2000/svg" class="rating" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#ffbb00">
+                    <g>
+                        <path d="M0 0h24v24H0V0z" fill="none"/>
+                    </g>
+                    <g>
+                        <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/>
+                    </g>
+                </svg>';
+                        }
+
+                        // Generate empty stars for the remaining (up to 5)
+                        for ($starEmpty = $row['rating']; $starEmpty < 5; $starEmpty++) {
+                            $stars .= '
+                <svg xmlns="http://www.w3.org/2000/svg" class="rating" height="20px" viewBox="0 0 24 24" width="20px" fill="#ffbb00">
+                    <path d="M0 0h24v24H0V0z" fill="none"/>
+                    <path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
+                </svg>';
+                        }
+
+                        // Display the card for each item
+                        echo '<div class="cards card' . $i . '">
+                <img src="../images/' . htmlspecialchars($row['image_path']) . '" alt="' . htmlspecialchars($row['name']) . '">
+                <div class="description">
+                    <p class="name">' . htmlspecialchars($row['name']) . '</p>
+                    <div class="stars">' . $stars . '</div>
+                    <p class="price">₱' . number_format($row['cost'], 2) . '</p>
+                </div>
+              </div>';
+
+                        $i++;
+                    }
+                } else {
+                    echo "Error: " . $conn->error;
                 }
                 ?>
-                <div class="cards cards1">
-                    <img src="../images/tilapia.jpg" alt="" class="item">
-                    <div class="description">
-                        <p class="name">Grilled Tilapia</p>
-                        <div id="rating-price">
-                            <div id="rating">
-                                <p class="rating">
-                                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
-                                        height="20px" viewBox="0 0 24 24" width="20px">
-                                        <g>
-                                            <path d="M0 0h24v24H0V0z" fill="none" />
-                                            <path d="M0 0h24v24H0V0z" fill="none" />
-                                        </g>
-                                        <g>
-                                            <path
-                                                d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z" />
-                                        </g>
-                                    </svg>
-                                </p>
-                                <p class="rating">
-                                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
-                                        height="20px" viewBox="0 0 24 24" width="20px">
-                                        <g>
-                                            <path d="M0 0h24v24H0V0z" fill="none" />
-                                            <path d="M0 0h24v24H0V0z" fill="none" />
-                                        </g>
-                                        <g>
-                                            <path
-                                                d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z" />
-                                        </g>
-                                    </svg>
-                                </p>
-                                <p class="rating">
-                                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
-                                        height="20px" viewBox="0 0 24 24" width="20px">
-                                        <g>
-                                            <path d="M0 0h24v24H0V0z" fill="none" />
-                                            <path d="M0 0h24v24H0V0z" fill="none" />
-                                        </g>
-                                        <g>
-                                            <path
-                                                d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z" />
-                                        </g>
-                                    </svg>
-                                </p>
-                                <p class="rating">
-                                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
-                                        height="20px" viewBox="0 0 24 24" width="20px">
-                                        <g>
-                                            <path d="M0 0h24v24H0V0z" fill="none" />
-                                            <path d="M0 0h24v24H0V0z" fill="none" />
-                                        </g>
-                                        <g>
-                                            <path
-                                                d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z" />
-                                        </g>
-                                    </svg>
-                                </p>
-                                <p class="rating">
-                                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
-                                        height="20px" viewBox="0 0 24 24" width="20px">
-                                        <g>
-                                            <path d="M0 0h24v24H0V0z" fill="none" />
-                                            <path d="M0 0h24v24H0V0z" fill="none" />
-                                        </g>
-                                        <g>
-                                            <path
-                                                d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z" />
-                                        </g>
-                                    </svg>
-                                </p>
-                            </div>
-                            <p class="price">
-                                ₱180.00
-                            </p>
-                        </div>
-                    </div>
-                    <div class="clickable">
-                        <p class="read">Read More</p>
-                        <p class="order">Order Now</p>
-                    </div>
-                </div>
 
             </main>
         </div>
