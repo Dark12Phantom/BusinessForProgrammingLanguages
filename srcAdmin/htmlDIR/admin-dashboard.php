@@ -68,6 +68,10 @@ if ($employee['position'] === 'staff') {
                     <p>Track menu items</p>
                     <a href="./menu-management.php">Track now</a>
                 </div>
+                <div class="inventory">
+                    <p>Track inventory</p>
+                    <a href="./inventory.php">Track now</a>
+                </div>
             </div>
             <div class="employees">
                 <p>Employees management</p>

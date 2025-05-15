@@ -73,7 +73,6 @@ body {
     align-items: center;
     height: 90%;
     width: 100%;
-    border: #e8720d 1px solid;
 }
 
 /* NAVIGATION CARDS */
@@ -99,4 +98,36 @@ body {
 .cards > div:hover {
     transform: translateY(-4px) scale(1.03);
     box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.cards h1 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.cards a {
+    display: inline-block;
+    background: var(--accent-color);
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-top: auto;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.cards a:hover {
+    background: var(--primary-dark);
+}
+
+.supply .raw, .supply .menu, .supply .inventory {
+    margin-top: 15px;
+    padding: 10px;
+    background: var(--shades);
+    border-radius: 4px;
+}
+
+.supply .raw p, .supply .menu p, .supply .inventory p {
+    margin-bottom: 8px;
 }
